@@ -1,13 +1,13 @@
 package forms;
 
-import transactions.main;
+import transactions.MenuTransaksi;
 
-public class formDashboard extends javax.swing.JFrame {
+public class Dashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form formDashboard
      */
-    public formDashboard() {
+    public Dashboard() {
         initComponents();
     }
 
@@ -104,25 +104,25 @@ public class formDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBarangViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangViewActionPerformed
-        formBarangView go = new formBarangView();
+        BarangView go = new BarangView();
         go.show();
         this.hide();
     }//GEN-LAST:event_btnBarangViewActionPerformed
 
     private void btnSupplierAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplierAddActionPerformed
-        formSupplierView go = new formSupplierView();
+        SupplierView go = new SupplierView();
         go.show();
         this.hide();
     }//GEN-LAST:event_btnSupplierAddActionPerformed
 
     private void btnBarangAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangAddActionPerformed
-        formSupplierTambah go = new formSupplierTambah();
+        SupplierTambah go = new SupplierTambah();
         go.show();
         this.hide();
     }//GEN-LAST:event_btnBarangAddActionPerformed
 
     private void btnTransaksiAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransaksiAddActionPerformed
-        main go = new main();
+        MenuTransaksi go = new MenuTransaksi();
         go.show();
         this.hide();
     }//GEN-LAST:event_btnTransaksiAddActionPerformed
@@ -144,20 +144,21 @@ public class formDashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new formDashboard().setVisible(true);
+                new Dashboard().setVisible(true);
             }
         });
     }

@@ -1,14 +1,41 @@
 
 package transactions;
 
-public class formKeluarBarang extends javax.swing.JFrame {
+public class KeluarBarang extends javax.swing.JFrame {
+private java.util.HashMap<String, String> kodeBarangMap = new java.util.HashMap<>();
+private java.util.HashMap<String, Integer> stokBarangMap = new java.util.HashMap<>();
+private java.util.HashMap<String, String[]> detailBarangMap = new java.util.HashMap<>();
 
-    /**
-     * Creates new form formKeluarBarang
-     */
-    public formKeluarBarang() {
+    
+    public KeluarBarang() {
         initComponents();
+        loadDataBarang();
     }
+    
+    private void loadDataBarang() {
+    try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("src/data/data_barang.txt"))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] data = line.split(",");
+            if (data.length == 6) {
+                String kodeBarang = data[0];
+                String namaBarang = data[1];
+                int stok = Integer.parseInt(data[2]);
+                String kategori = data[3];
+                String harga = data[4];
+                String supplier = data[5];
+
+                kodeBarangMap.put(namaBarang, kodeBarang);
+                stokBarangMap.put(namaBarang, stok);
+                detailBarangMap.put(namaBarang, new String[]{kategori, harga, supplier});
+                cbNama.addItem(namaBarang); // Populate ComboBox
+            }
+        }
+    } catch (java.io.IOException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Error membaca data barang: " + e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -19,7 +46,26 @@ public class formKeluarBarang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField2 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         lblJudul = new javax.swing.JLabel();
+        lblKodeBarang = new javax.swing.JLabel();
+        txtKode = new javax.swing.JTextField();
+        lblNama = new javax.swing.JLabel();
+        cbNama = new javax.swing.JComboBox<>();
+        spinKeluar = new javax.swing.JSpinner();
+        lblBarangKeluar = new javax.swing.JLabel();
+        txtStok = new javax.swing.JTextField();
+        lblStok = new javax.swing.JLabel();
+        btnKembali = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
+
+        jTextField2.setEditable(false);
+
+        jLabel4.setText("Kode Barang  :");
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -28,13 +74,66 @@ public class formKeluarBarang extends javax.swing.JFrame {
         lblJudul.setText("Transaksi Keluar");
         lblJudul.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        lblKodeBarang.setText("Kode Barang  :");
+
+        txtKode.setEditable(false);
+
+        lblNama.setText("Nama Barang :");
+
+        cbNama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNamaActionPerformed(evt);
+            }
+        });
+
+        lblBarangKeluar.setText("Jumlah Barang Keluar :");
+
+        txtStok.setEditable(false);
+
+        lblStok.setText("Stok Barang");
+
+        btnKembali.setText("Kembali");
+        btnKembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKembaliActionPerformed(evt);
+            }
+        });
+
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblJudul, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblJudul, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSimpan)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnKembali))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblKodeBarang)
+                                    .addComponent(lblNama)
+                                    .addComponent(lblBarangKeluar)
+                                    .addComponent(lblStok))
+                                .addGap(47, 47, 47)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtStok, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spinKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtKode)
+                                        .addComponent(cbNama, 0, 180, Short.MAX_VALUE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -42,11 +141,106 @@ public class formKeluarBarang extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(lblJudul)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblKodeBarang)
+                    .addComponent(txtKode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNama)
+                    .addComponent(cbNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStok))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBarangKeluar)
+                    .addComponent(spinKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnKembali))
+                    .addComponent(btnSimpan, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNamaActionPerformed
+    String namaBarang = (String) cbNama.getSelectedItem();
+    if (kodeBarangMap.containsKey(namaBarang)) {
+        txtKode.setText(kodeBarangMap.get(namaBarang)); // Tampilkan kode barang
+    } else {
+        txtKode.setText("");
+    }
+
+    if (stokBarangMap.containsKey(namaBarang)) {
+        txtStok.setText(String.valueOf(stokBarangMap.get(namaBarang))); // Tampilkan stok barang
+    } else {
+        txtStok.setText("");
+    }
+    }//GEN-LAST:event_cbNamaActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        String kodeBarang = txtKode.getText();
+    String namaBarang = (String) cbNama.getSelectedItem();
+    int stokKeluar = (int) spinKeluar.getValue();
+    int stokTersedia = stokBarangMap.getOrDefault(namaBarang, 0);
+    String tanggal = java.time.LocalDate.now().toString(); // Tanggal hari ini
+
+    if (kodeBarang.isEmpty() || namaBarang == null || stokKeluar <= 0) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Isi semua data dengan benar!", "Peringatan", javax.swing.JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    if (stokKeluar > stokTersedia) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Jumlah barang keluar melebihi stok tersedia!", "Peringatan", javax.swing.JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("src/data/data_keluar.txt", true))) {
+        writer.write(kodeBarang + "," + namaBarang + "," + stokKeluar + "," + tanggal);
+        writer.newLine();
+        javax.swing.JOptionPane.showMessageDialog(this, "Data berhasil disimpan!", "Informasi", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+        // Kurangi stok barang
+        stokBarangMap.put(namaBarang, stokTersedia - stokKeluar);
+        txtStok.setText(String.valueOf(stokTersedia - stokKeluar)); // Perbarui tampilan stok
+
+        // Perbarui file data_barang.txt
+        updateDataBarangFile();
+    } catch (java.io.IOException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Error menyimpan data: " + e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
+        MenuTransaksi go = new MenuTransaksi();
+        go.show();
+        this.hide();
+    }//GEN-LAST:event_btnKembaliActionPerformed
+
+private void updateDataBarangFile() {
+    try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("src/data/data_barang.txt"))) {
+        for (String namaBarang : kodeBarangMap.keySet()) {
+            String kodeBarang = kodeBarangMap.get(namaBarang);
+            int stok = stokBarangMap.getOrDefault(namaBarang, 0);
+            String[] details = detailBarangMap.getOrDefault(namaBarang, new String[]{"", "", ""});
+            String kategori = details[0];
+            String harga = details[1];
+            String supplier = details[2];
+
+            writer.write(kodeBarang + "," + namaBarang + "," + stok + "," + kategori + "," + harga + "," + supplier);
+            writer.newLine();
+        }
+    } catch (java.io.IOException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Error memperbarui file stok barang: " + e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+}
 
     /**
      * @param args the command line arguments
@@ -65,25 +259,39 @@ public class formKeluarBarang extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formKeluarBarang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KeluarBarang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formKeluarBarang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KeluarBarang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formKeluarBarang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KeluarBarang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formKeluarBarang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KeluarBarang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new formKeluarBarang().setVisible(true);
+                new KeluarBarang().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnKembali;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JComboBox<String> cbNama;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblBarangKeluar;
     private javax.swing.JLabel lblJudul;
+    private javax.swing.JLabel lblKodeBarang;
+    private javax.swing.JLabel lblNama;
+    private javax.swing.JLabel lblStok;
+    private javax.swing.JSpinner spinKeluar;
+    private javax.swing.JTextField txtKode;
+    private javax.swing.JTextField txtStok;
     // End of variables declaration//GEN-END:variables
 }

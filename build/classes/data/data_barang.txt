@@ -1,2 +1,10 @@
+E001,AC AQUA,15, Elektronik,3000000,PT Gamma Distribution
+M004,Sepeda,8, Kendaraan,1000000,PT TOBAT
+T001,Motor,3, Kendaraan,25000000,PT AGUNG
+K005,Karpet,12, Furniture,189000,PT Alpha Supply
+Z002,Kulkas Sharp,5, Elektronik,1000000,PT Epsilon Materials
+K001,Kursi,35, Furniture,96000,PT Delta Resources
+E002,Proyetor,5, Elektronik,1500000,PT Beta Logistics
+M802,Kipas Angin Cosmos,50, Elektronik,250000,PT Gamma Distribution
 K003,Meja,120,Furniture,500000,PT DEF
-,null,null,null,null,null
+K008,pintu,28, Furniture,850000,PT Epsilon Materials

@@ -2,12 +2,12 @@
 package transactions;
 
 
-public class main extends javax.swing.JFrame {
+public class MenuTransaksi extends javax.swing.JFrame {
 
     /**
      * Creates new form main
      */
-    public main() {
+    public MenuTransaksi() {
         initComponents();
     }
 
@@ -23,13 +23,13 @@ public class main extends javax.swing.JFrame {
         lblJudul = new javax.swing.JLabel();
         btnBarangView = new javax.swing.JButton();
         btnSupplierAdd = new javax.swing.JButton();
-        btnTransaksiAdd = new javax.swing.JButton();
+        btnKeluarTransaksi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblJudul.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblJudul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblJudul.setText("DASHBOARD ADMIN");
+        lblJudul.setText("MENU TRANSAKSI");
         lblJudul.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         btnBarangView.setText("Tambah Barang");
@@ -46,12 +46,12 @@ public class main extends javax.swing.JFrame {
             }
         });
 
-        btnTransaksiAdd.setText("Keluar Barang");
-        btnTransaksiAdd.setMaximumSize(new java.awt.Dimension(125, 23));
-        btnTransaksiAdd.setPreferredSize(new java.awt.Dimension(125, 23));
-        btnTransaksiAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnKeluarTransaksi.setText("Keluar Barang");
+        btnKeluarTransaksi.setMaximumSize(new java.awt.Dimension(125, 23));
+        btnKeluarTransaksi.setPreferredSize(new java.awt.Dimension(125, 23));
+        btnKeluarTransaksi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTransaksiAddActionPerformed(evt);
+                btnKeluarTransaksiActionPerformed(evt);
             }
         });
 
@@ -61,15 +61,15 @@ public class main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 461, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnSupplierAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lblJudul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(btnSupplierAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
                             .addComponent(btnBarangView, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnTransaksiAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnKeluarTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap()))
         );
         layout.setVerticalGroup(
@@ -82,7 +82,7 @@ public class main extends javax.swing.JFrame {
                     .addGap(24, 24, 24)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnBarangView, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnTransaksiAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnKeluarTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(btnSupplierAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(38, Short.MAX_VALUE)))
@@ -93,7 +93,7 @@ public class main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBarangViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangViewActionPerformed
-        formBarangTambah go = new formBarangTambah();
+        BarangTambah go = new BarangTambah();
         go.show();
         this.hide();
     }//GEN-LAST:event_btnBarangViewActionPerformed
@@ -102,9 +102,11 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSupplierAddActionPerformed
 
-    private void btnTransaksiAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransaksiAddActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTransaksiAddActionPerformed
+    private void btnKeluarTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarTransaksiActionPerformed
+        KeluarBarang go = new KeluarBarang();
+        go.show();
+        this.hide();
+    }//GEN-LAST:event_btnKeluarTransaksiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,28 +125,29 @@ public class main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuTransaksi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuTransaksi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuTransaksi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuTransaksi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new main().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MenuTransaksi().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBarangView;
+    private javax.swing.JButton btnKeluarTransaksi;
     private javax.swing.JButton btnSupplierAdd;
-    private javax.swing.JButton btnTransaksiAdd;
     private javax.swing.JLabel lblJudul;
     // End of variables declaration//GEN-END:variables
 }

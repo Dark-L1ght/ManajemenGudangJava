@@ -1,6 +1,6 @@
 package transactions;
 
-import forms.formDashboard;
+import forms.Dashboard;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,12 +9,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import javax.swing.DefaultComboBoxModel;
 
-public class formBarangTambah extends javax.swing.JFrame {
+public class BarangTambah extends javax.swing.JFrame {
 
     /**
      * Creates new form formBarangTambah
      */
-    public formBarangTambah() {
+    public BarangTambah() {
         initComponents();
         populateComboBoxFromFile("C:\\Users\\abiyy\\Documents\\NetBeansProjects\\warehouseManagementSystem\\src\\data\\data_supplier.txt");
     }
@@ -194,7 +194,7 @@ private void populateComboBoxFromFile(String filePath) {
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         // TODO add your handling code here:
-        formDashboard go = new formDashboard();
+        Dashboard go = new Dashboard();
         go.show();
         this.hide();
     }//GEN-LAST:event_btnBatalActionPerformed
@@ -204,8 +204,7 @@ private void populateComboBoxFromFile(String filePath) {
     }//GEN-LAST:event_cbSupplierActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
-        // TODO add your handling code here:
-        String kodeBarang = KodeBarang.getText();
+    String kodeBarang = KodeBarang.getText();
     String namaBarang = txtNama.getText();
     String hargaBarang = txtHarga.getText();
     String stokBarang = stok.getText();
@@ -219,7 +218,7 @@ private void populateComboBoxFromFile(String filePath) {
     }
     
     // Menyusun data dalam format yang sesuai (misalnya dipisahkan dengan koma)
-    String data = kodeBarang + "," + namaBarang + "," + stokBarang + ", " + kategori + "," + hargaBarang + "," + supplier + "\n";
+    String data = kodeBarang + "," + namaBarang + "," + stokBarang + ", " + kategori + "," + hargaBarang + "," + supplier;
     
     // Tentukan lokasi file tempat data akan disimpan
     String filePath = "C:\\Users\\abiyy\\Documents\\NetBeansProjects\\warehouseManagementSystem\\src\\data\\data_barang.txt";
@@ -259,20 +258,21 @@ private void populateComboBoxFromFile(String filePath) {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formBarangTambah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarangTambah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formBarangTambah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarangTambah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formBarangTambah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarangTambah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formBarangTambah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarangTambah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new formBarangTambah().setVisible(true);
+                new BarangTambah().setVisible(true);
             }
         });
     }
