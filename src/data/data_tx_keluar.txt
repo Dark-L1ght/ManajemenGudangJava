@@ -1,0 +1,2 @@
+K003,Meja,120,Furniture,500000,PT DEF
+,null,null,null,null,null
